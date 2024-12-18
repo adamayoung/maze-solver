@@ -49,14 +49,14 @@ A maze can be initialised in several ways.
 #### Array of Squares
 
 ```swift
-let maze = try Maze(
+let maze = try Maze<MyMazeSquareType>(
     squares: [
         [
-            MazeSquare<MyMazeSquareType>(type: .empty, position: Position(x: 0, y: 0)),
+            MazeSquare(type: .empty, position: Position(x: 0, y: 0)),
             ...
         ],
         [
-            MazeSquare<MyMazeSquareType>(type: .wall, position: Position(x: 0, y: 1)),
+            MazeSquare(type: .wall, position: Position(x: 0, y: 1)),
             ...
         ],
         ...
@@ -75,16 +75,15 @@ let input = """
    ######
 """
 
-let maze = Maze<MyMazeSquareType>(input: input)
+let maze = try Maze<MyMazeSquareType>(input: input)
 ```
 
 #### File
 
-
 ```swift
 let mazeFileURL: URL = ...
 
-let maze = Maze<MyMazeSquareType>(fileURL: mazeFileURL)
+let maze = try Maze<MyMazeSquareType>(fileURL: mazeFileURL)
 ```
 
 ## Finding a path
